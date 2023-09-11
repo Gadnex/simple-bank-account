@@ -28,10 +28,10 @@ The system uses an H2 in memory database that can be accessed at the following U
 http://localhost:8080/h2-console
 The following details can be used to access the database:
 
-    **Driver Class:** org.h2.Driver
-    **JDBC URL:** jdbc:h2:mem:testdb
-    **User Name:** sa
-    **Password:** <blank>
+**Driver Class:** org.h2.Driver  
+**JDBC URL:** jdbc:h2:mem:testdb  
+**User Name:** sa  
+**Password:** 
 
 ## Unit Tests
 Run the command in the root of the project.
