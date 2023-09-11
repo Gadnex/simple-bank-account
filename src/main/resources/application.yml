@@ -1,0 +1,47 @@
+spring:
+    application:
+        name: ${rootProject.name}
+    datasource:
+        # Needs to be set explicitly to use database name testdb otherwise random guid is used
+        # DB_CLOSE_DELAY prevents database from being destroyed after disconnect of schema creation
+        url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    jpa:
+        # Required for src/main/resources/data.sql to run after Hibernate schema creation
+        defer-datasource-initialization: true
+    h2:
+        console:
+            enabled: true
+    jackson:
+        # Global setting to not return null objects in JSON responses
+        default-property-inclusion: NON_NULL
+
+server:
+    port: 8080
+
+management:
+    server:
+        port: 9080
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+    endpoint:
+        health:
+            show-details: always
+            probes:
+                enabled: true
+    info:
+        java.enabled: true
+        env.enabled: true
+
+springdoc:
+    use-management-port: true
+
+application:
+    credit-card-fee-percentage: 1
+    cors:
+        origins: http://localhost:\${management.server.port}
+
+logging:
+    level:
+        '[org.springframework]': ERROR
